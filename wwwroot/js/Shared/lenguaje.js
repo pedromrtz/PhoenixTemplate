@@ -34,53 +34,84 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-window.onload = function () {
-    var initlang = localStorage.getItem('lang') || 'es';
-    var elements = document.querySelectorAll('[langId]');
-    function loadJson() {
-        return __awaiter(this, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch("/translation/".concat(initlang, "/translation.json"))];
-                    case 1:
-                        response = _a.sent();
-                        if (!response.ok) {
-                            throw new Error('No se pudo cargar el archivo JSON.');
-                        }
-                        return [4 /*yield*/, response.json()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
+import * as global from './global.js';
+window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
+    function traducirPagina(idioma) {
+        var elementosATraducir = document.querySelectorAll('.traducir');
+        elementosATraducir.forEach(function (elemento) {
+            var textoOriginal = elemento.textContent;
+            var url = "/proxy-translate?q=".concat(encodeURIComponent(textoOriginal), "&tl=").concat(idioma);
+            fetch(url)
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                var textoTraducido = global.capitalizarPrimeraLetra(data[0][0][0]);
+                elemento.textContent = textoTraducido;
+            })
+                .catch(function (error) {
+                console.error('Error al traducir:', error);
             });
         });
     }
-    loadJson().then(function (data) {
-        var translationData = data;
-        //console.log(translationData);
-        elements.forEach(function (element) {
-            var key = element.getAttribute('langId');
-            if (key) {
-                element.innerHTML = translationData[key];
-            }
-        });
-        // Puedes utilizar translationData aquí
-    }).catch(function (error) {
-        console.error('Error al cargar el archivo JSON:', error);
+    var initlang, lang_es, lang_en, lang_pt, lang_ch;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                initlang = localStorage.getItem('lang') || 'es';
+                return [4 /*yield*/, traducirPagina(initlang)];
+            case 1:
+                _a.sent();
+                lang_es = document.getElementById('lang_es');
+                lang_en = document.getElementById('lang_en');
+                lang_pt = document.getElementById('lang_pt');
+                lang_ch = document.getElementById('lang_ch');
+                if (lang_es != null && lang_en != null && lang_pt != null && lang_ch != null) {
+                    lang_es.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, traducirPagina('es')];
+                                case 1:
+                                    _a.sent();
+                                    localStorage.setItem('lang', 'es');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); };
+                    lang_en.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, traducirPagina('en')];
+                                case 1:
+                                    _a.sent();
+                                    localStorage.setItem('lang', 'en');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); };
+                    lang_pt.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, traducirPagina('pt')];
+                                case 1:
+                                    _a.sent();
+                                    localStorage.setItem('lang', 'pt');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); };
+                    lang_ch.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, traducirPagina('zh')];
+                                case 1:
+                                    _a.sent();
+                                    localStorage.setItem('lang', 'zh');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); };
+                }
+                return [2 /*return*/];
+        }
     });
-    var lang_es = document.getElementById('lang_es');
-    var lang_en = document.getElementById('lang_en');
-    var lang_br = document.getElementById('lang_br');
-    lang_es.onclick = function () {
-        localStorage.setItem('lang', 'es');
-        location.reload();
-    };
-    lang_en.onclick = function () {
-        localStorage.setItem('lang', 'en');
-        location.reload();
-    };
-    lang_br.onclick = function () {
-        localStorage.setItem('lang', 'br');
-        location.reload();
-    };
-};
+}); };
 //# sourceMappingURL=lenguaje.js.map

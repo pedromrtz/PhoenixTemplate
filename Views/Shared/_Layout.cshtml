@@ -9,6 +9,11 @@
     }
 
     var fullPath = !string.IsNullOrEmpty(controllerName) ? $"{baseUrl}/{controllerName}" : baseUrl;
+
+    <script>
+        const baseUrl = '@baseUrl';
+        const fullPath = '@fullPath';
+    </script>
 }
 
 <!DOCTYPE html>
@@ -92,9 +97,8 @@
     <!-- ===============================================-->
     <!--  Custom JS -->
     <!-- ===============================================-->
-    <script src="~/js/Shared/global.js"></script>
     <script src="~/js/Shared/layout.js"></script>
-
+    <script type ="module" src="~/js/Shared/lenguaje.js"></script>
 
 </head>
 
@@ -108,7 +112,7 @@
                     aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                             class="toggle-line"></span></span></button>
                 <a class="navbar-brand navbar-brand mt-1" href="@fullPath/Home">
-                    <span class="text-primary-light" langId="template">Template</span>
+                    <span class="text-primary-light traducir">Template</span>
                     <span class="text-body-highlight">Phoenix</span>
                 </a>
             </div>
@@ -133,7 +137,7 @@
                                     stroke-linejoin="round" class="feather feather-moon me-1 icon">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                                 </svg>
-                            </span><span class="fs-9 mt-1 fw-bold" langId="dark">Oscuro</span>
+                            </span><span class="fs-9 mt-1 fw-bold traducir">Oscuro</span>
                         </label>
                         <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark"
                             for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left"
@@ -152,7 +156,7 @@
                                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                                 </svg>
-                            </span><span class="fs-9 mt-1 fw-bold" langId="light">Claro</span>
+                            </span><span class="fs-9 mt-1 fw-bold traducir">Brillante</span>
                         </label>
                     </div>
                 </li>
@@ -175,8 +179,8 @@
                         <div class="card position-relative border-0">
                             <div class="card-header p-2">
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="text-body-emphasis mb-0" langId="notificaciones">Notificaciones</h5>
-                                    <button class="btn btn-link p-0 fs-9 fw-normal" langId="all_read" type="button">
+                                    <h5 class="text-body-emphasis mb-0 traducir">Notificaciones</h5>
+                                    <button class="btn btn-link p-0 fs-9 fw-normal traducir" type="button">
                                         Marcar todo como leído
                                     </button>
                                 </div>
@@ -208,7 +212,7 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">💬</span>
-                                                                            <span langId="mentioned_you">Te ha mencionado en un comentario.</span>
+                                                                            <span class="traducir">Has Mentioned you in a comment.</span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10">10m</span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -227,7 +231,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -249,7 +253,7 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">📅</span>
-                                                                            <span langId="has_created_event">Ha creado un evento.</span>
+                                                                            <span class="traducir">Created an event.</span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10">20m</span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -267,7 +271,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -290,7 +294,9 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">👍</span>
-                                                                            <span langId="liked_coment">Le ha gustado tu comentario.</span>
+                                                                            <span class="traducir">
+                                                                                Liked your comment
+                                                                            </span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10">1h</span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -308,7 +314,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -330,7 +336,7 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">💬</span>
-                                                                            <span langId="mentioned_you">Te ha mencionado en un comentario.</span>
+                                                                            <span class="traducir">Te ha mencionado en un comentario.</span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10"></span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -348,7 +354,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -370,7 +376,7 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">👤</span>
-                                                                            <span langId="tag_in_coment">Te etiqueto en un comentario.</span>
+                                                                            <span class="traducir">Te ha etiquetado en un comentario</span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10"></span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -388,7 +394,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -410,7 +416,7 @@
                                                                         <p
                                                                             class="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
                                                                             <span class="me-1 fs-10">👍</span>
-                                                                            <span langId="liked_coment">Le ha gustado tu comentario.</span>
+                                                                            <span class="traducir">Liked your comment</span>
                                                                             <span class="ms-2 text-body-quaternary text-opacity-75 fw-bold fs-10"></span>
                                                                         </p>
                                                                         <p class="text-body-secondary fs-9 mb-0">
@@ -428,7 +434,7 @@
                                                                         <span class="fas fa-ellipsis-h fs-10 text-body"></span>
                                                                     </button>
                                                                     <div class="dropdown-menu py-2">
-                                                                        <a class="dropdown-item" href="#!">
+                                                                        <a class="dropdown-item traducir" href="#!">
                                                                             Marcar como no leído
                                                                         </a>
                                                                     </div>
@@ -471,7 +477,7 @@
                             </div>
                             <div class="card-footer p-0 border-top border-translucent border-0">
                                 <div class="my-2 text-center fw-bold fs-10 text-body-tertiary text-opactity-85">
-                                    <a class="fw-bolder" href="../pages/notifications.html">Historial de notificaciones</a>
+                                    <a class="fw-bolder traducir" href="#">Historial de notificaciones</a>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +515,7 @@
                                                 class="feather feather-user me-2 text-body align-bottom">
                                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                                 <circle cx="12" cy="7" r="4"></circle>
-                                            </svg><span langId="profile">Perfil</span>
+                                            </svg><span class="traducir">Perfil</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -522,7 +528,7 @@
                                                 <path
                                                     d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
                                                 </path>
-                                            </svg><span langId="config_privacy">Configuración y privacidad</span>
+                                            </svg><span class="traducir">Configuración y privacidad</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -534,7 +540,7 @@
                                                 <circle cx="12" cy="12" r="10"></circle>
                                                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                                                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                            </svg><span langId="help_center">Centro de ayuda</span>
+                                            </svg><span class="traducir">Centro de ayuda</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -548,7 +554,7 @@
                                                 <path
                                                     d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                                                 </path>
-                                            </svg><span langId="language">Idioma</span>
+                                            </svg><span class="traducir">Idioma</span>
                                         </a>
                                         
                                     </li>
@@ -572,15 +578,24 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            @* <li class="nav-item">
-                                                <a class="nav-link cursor-pointer" id="lang_br" data-lang="br">
+                                            <li class="nav-item">
+                                                <a class="nav-link cursor-pointer" id="lang_pt" data-lang="pt">
                                                     <div class="d-flex align-items-center">
                                                         <img src="/template/vendors/flags/img/separate/br.png" class="flag-icon" />
                                                         &nbsp;&nbsp;
                                                         <span class="nav-link-text">Português</span>
                                                     </div>
                                                 </a>
-                                            </li> *@
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link cursor-pointer" id="lang_ch" data-lang="ch">
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="/template/vendors/flags/img/separate/cn.png" class="flag-icon" />
+                                                        &nbsp;&nbsp;
+                                                        <span class="nav-link-text">Chinese</span>
+                                                    </div>
+                                                </a>
+                                            </li>
                                         </ul>
 
                                     </div>
@@ -596,7 +611,7 @@
                                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                             <polyline points="16 17 21 12 16 7"></polyline>
                                             <line x1="21" y1="12" x2="9" y2="12"></line>
-                                        </svg><span langId="sing_out">Cerrar sesión</span>
+                                        </svg><span class="traducir">Log Out</span>
                                     </a>
                                 </div>
                                 
@@ -616,7 +631,7 @@
                 <div class="row g-0 justify-content-between align-items-center h-100">
                     <div class="col-12 col-sm-auto text-center">
                         <p class="mb-0 mt-2 mt-sm-0 text-body">
-                            <span langId="all_rights_reserved">Todos los derechos reservados</span>
+                            <span class="traducir">Todos los derechos reservados</span>
                             <span class="d-none d-sm-inline-block"></span>
                             <span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none">
                             <script>document.write(new Date().getFullYear())</script> ©
@@ -631,9 +646,6 @@
 
 
     </main>
-
-    <script src="~/js/Shared/lenguaje.js"></script>
-
 
 </body>
 

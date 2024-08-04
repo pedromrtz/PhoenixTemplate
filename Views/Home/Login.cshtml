@@ -77,6 +77,21 @@
         });
     </script>
 
+    <!-- ===============================================-->
+    <!--  Custom CSS -->
+    <!-- ===============================================-->
+    <link href="~/css/shared/global.css" rel="stylesheet" />
+    <link href="~/css/Home/login.css" rel="stylesheet" />
+
+    <!-- ===============================================-->
+    <!--  Custom JS -->
+    <!-- ===============================================-->
+    <script src="~/js/Shared/layout.js"></script>
+    <script type="module" src="~/js/Shared/lenguaje.js"></script>
+
+    <script src="~/js/Home/login.js"></script>
+
+
 </head>
 <body>
     <main class="main" id="top">
@@ -89,19 +104,19 @@
                         </div>
                     </a>
                     <div class="text-center mb-7">
-                        <h3 class="text-body-highlight">Iniciar sesión</h3>
-                        <p class="text-body-tertiary">Acceda a su cuenta</p>
+                        <h3 class="text-body-highlight traducir">Iniciar sesión</h3>
+                        <p class="text-body-tertiary traducir">Acceda a su cuenta</p>
                     </div>
                     <div class="mb-3 text-start">
-                        <label class="form-label" for="email">Email</label>
+                        <label class="form-label traducir" for="email">Email</label>
                         <div class="form-icon-container">
-                            <input class="form-control form-icon-input" id="email" type="email" placeholder="nombre@ejemplo.com" /><span class="fas fa-user text-body fs-9 form-icon"></span>
+                            <input class="form-control form-icon-input" id="email" type="email" placeholder="name@example.com" /><span class="fas fa-user text-body fs-9 form-icon"></span>
                         </div>
                     </div>
                     <div class="mb-3 text-start">
-                        <label class="form-label" for="password">Contraseña</label>
+                        <label class="form-label traducir" for="password">Contraseña</label>
                         <div class="form-icon-container" data-password="data-password">
-                            <input class="form-control form-icon-input pe-6" id="password" type="password" placeholder="Contraseña"
+                            <input class="form-control form-icon-input pe-6" id="password" type="password" placeholder="Password"
                                    data-password-input="data-password-input" /><span class="fas fa-key text-body fs-9 form-icon"></span>
                             <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary"
                                     data-password-toggle="data-password-toggle">
@@ -113,20 +128,21 @@
                         <div class="col-auto">
                             <div class="form-check mb-0">
                                 <input class="form-check-input" id="basic-checkbox" type="checkbox" checked="checked" />
-                                <label class="form-check-label mb-0" for="basic-checkbox">Recuerdame</label>
+                                <label class="form-check-label mb-0 traducir" for="basic-checkbox">Recuerdame</label>
                             </div>
                         </div>
                         <div class="col-auto">
-                            <a class="fs-9 fw-semibold"
+                            <a class="fs-9 fw-semibold traducir"
                                href="@fullPath/ForgotPass">¿Olvidó su contraseña?</a>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100 mb-3">Iniciar sesión</button>
+                    <button class="btn btn-primary w-100 mb-3 traducir">Iniciar sesión</button>
                    
                 </div>
             </div>
         </div>
        
     </main>
+
 </body>
 </html>

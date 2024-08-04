@@ -77,6 +77,22 @@
         });
     </script>
 
+    <!-- ===============================================-->
+    <!--  Custom CSS -->
+    <!-- ===============================================-->
+    <link href="~/css/shared/global.css" rel="stylesheet" />
+    <link href="~/css/Home/forgotPass.css" rel="stylesheet" />
+
+    <!-- ===============================================-->
+    <!--  Custom JS -->
+    <!-- ===============================================-->
+    <script src="~/js/Shared/layout.js"></script>
+    <script type="module" src="~/js/Shared/lenguaje.js"></script>
+
+    <script src="~/js/Home/forgotPass.js"></script>
+
+
+
 </head>
 <body>
     <main class="main" id="top">
@@ -90,11 +106,11 @@
                     </a>
                     <div class="px-xxl-5">
                         <div class="text-center mb-6">
-                            <h4 class="text-body-highlight">¿Olvidó su contraseña?</h4>
-                            <p class="text-body-tertiary mb-5">Introduce tu dirección de correo electrónico y te enviaremos un enlace para <br class="d-sm-none" />restablecer tu contraseña.</p>
+                            <h4 class="text-body-highlight traducir">¿Olvidó su contraseña?</h4>
+                            <p class="text-body-tertiary mb-5 traducir" >Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
                             <form class="d-flex align-items-center mb-5">
                                 <input class="form-control flex-1" id="email" type="email" placeholder="Email" />
-                                <button class="btn btn-primary ms-2" id="btn_enviar_reset_link">Enviar<span class="fas fa-chevron-right ms-2"></span></button>
+                                <button class="btn btn-primary ms-2" id="btn_enviar_reset_link"><span class="traducir">Enviar</span><span class="fas fa-chevron-right ms-2"></span></button>
                             </form>
                             @* <a class="fs-9 fw-bold" href="">Still having problems?</a> *@
                         </div>
@@ -104,5 +120,6 @@
         </div>
 
     </main>
+
 </body>
 </html>

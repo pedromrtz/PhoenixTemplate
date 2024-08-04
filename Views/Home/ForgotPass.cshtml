@@ -1,0 +1,108 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login";
+
+    var baseUrl = string.Empty;
+    var controllerName = string.Empty;
+
+    if (HttpContextAccessor?.HttpContext?.Request != null)
+    {
+        baseUrl = $"{HttpContextAccessor.HttpContext.Request.Scheme}://{HttpContextAccessor.HttpContext.Request.Host}";
+        controllerName = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+    }
+
+    var fullPath = !string.IsNullOrEmpty(controllerName) ? $"{baseUrl}/{controllerName}" : baseUrl;
+}
+
+<!DOCTYPE html>
+<html lang="es-es" dir="ltr" data-navigation-type="default" data-navbar-horizontal-shape="default">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Template</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/template/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/template/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/template/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/template/assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="~/template/assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="~/template/assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="~/template/vendors/simplebar/simplebar.min.js"></script>
+    <script src="~/template/assets/js/config.js"></script>
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="~/template/vendors/simplebar/simplebar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="~/template/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+    <link href="~/template/assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+    <link href="~/template/assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="~/template/assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="~/template/vendors/popper/popper.min.js"></script>
+    <script src="~/template/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/template/vendors/anchorjs/anchor.min.js"></script>
+    <script src="~/template/vendors/is/is.min.js"></script>
+    <script src="~/template/vendors/fontawesome/all.min.js"></script>
+    <script src="~/template/vendors/lodash/lodash.min.js"></script>
+    <script src="~/template/vendors/list.js/list.min.js"></script>
+    <script src="~/template/vendors/feather-icons/feather.min.js"></script>
+    <script src="~/template/vendors/dayjs/dayjs.min.js"></script>
+    <script src="~/template/assets/js/phoenix.js"></script>
+
+
+    <script>
+        var linkRTL = document.getElementById('style-rtl');
+        var userLinkRTL = document.getElementById('user-style-rtl');
+        linkRTL.setAttribute('disabled', true);
+        userLinkRTL.setAttribute('disabled', true);
+        window.config.set({
+            phoenixNavbarTopStyle: 'darker'
+        });
+    </script>
+
+</head>
+<body>
+    <main class="main" id="top">
+        <div class="container">
+            <div class="row flex-center min-vh-100 py-5">
+                <div class="col-sm-10 col-md-8 col-lg-5 col-xxl-4">
+                    <a class="d-flex flex-center text-decoration-none mb-4" href="@fullPath/Home">
+                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block">
+                            <img src="~/template/assets/img/icons/logo.png" alt="phoenix" width="58" />
+                        </div>
+                    </a>
+                    <div class="px-xxl-5">
+                        <div class="text-center mb-6">
+                            <h4 class="text-body-highlight">¿Olvidó su contraseña?</h4>
+                            <p class="text-body-tertiary mb-5">Introduce tu dirección de correo electrónico y te enviaremos un enlace para <br class="d-sm-none" />restablecer tu contraseña.</p>
+                            <form class="d-flex align-items-center mb-5">
+                                <input class="form-control flex-1" id="email" type="email" placeholder="Email" />
+                                <button class="btn btn-primary ms-2" id="btn_enviar_reset_link">Enviar<span class="fas fa-chevron-right ms-2"></span></button>
+                            </form>
+                            @* <a class="fs-9 fw-bold" href="">Still having problems?</a> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

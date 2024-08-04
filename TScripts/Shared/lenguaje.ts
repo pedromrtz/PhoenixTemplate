@@ -1,52 +1,50 @@
-// Importar i18next y el detector de idioma
-declare const i18next: any;
-declare const i18nextBrowserLanguageDetector: any;
+window.onload = function () {
 
-// Configurar i18next
-i18next
-    .use(i18nextBrowserLanguageDetector)  // Usar el detector de idioma
-    .init({
-        resources: {
-            en: {
-                translation: {
-                    "welcome": "Welcome to our website",
-                    "description": "This is a sample description"
-                }
-            },
-            es: {
-                translation: {
-                    "welcome": "Bienvenido a nuestro sitio web",
-                    "description": "Esta es una descripción de muestra"
-                }
-            }
-        },
-        fallbackLng: 'en',  // Idioma por defecto
-        interpolation: {
-            escapeValue: false
+
+    const initlang: string = localStorage.getItem('lang') || 'es';
+    const elements = document.querySelectorAll('[langId]');
+
+    async function loadJson(): Promise<any> {
+        const response = await fetch(`/translation/${initlang}/translation.json`);
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el archivo JSON.');
         }
-    }, (err: any, t: any) => {
-        if (err) return console.error('i18next initialization error:', err);
-        // Inicialización completa
-        updateContent();
+        return await response.json();
+    }
+
+    loadJson().then(data => {
+        const translationData = data;
+        //console.log(translationData);
+
+        elements.forEach(element => {
+            const key = element.getAttribute('langId');
+            if (key) {
+                element.innerHTML = translationData[key];
+            }
+        });
+
+        // Puedes utilizar translationData aquí
+    }).catch(error => {
+        console.error('Error al cargar el archivo JSON:', error);
     });
 
-// Función para actualizar el contenido de la página según el idioma
-function updateContent() {
-    document.getElementById('welcome')!.innerText = i18next.t('welcome');
-    document.getElementById('description')!.innerText = i18next.t('description');
+    const lang_es = document.getElementById('lang_es') as HTMLButtonElement;
+    const lang_en = document.getElementById('lang_en') as HTMLButtonElement;
+    const lang_br = document.getElementById('lang_br') as HTMLButtonElement;
+
+    lang_es.onclick = () => {
+        localStorage.setItem('lang', 'es');
+        location.reload();
+    }
+
+    lang_en.onclick = () => {
+        localStorage.setItem('lang', 'en');
+        location.reload();
+    }
+
+    lang_br.onclick = () => {
+        localStorage.setItem('lang', 'br');
+        location.reload();
+    }
+
 }
-
-// Cambiar el idioma de la página
-function changeLanguage(lng: string) {
-    i18next.changeLanguage(lng, (err: any) => {
-        if (err) return console.error('Language change error:', err);
-        updateContent();
-    });
-}
-
-// Escuchar eventos de cambio de idioma en los botones
-document.getElementById('en-btn')!.addEventListener('click', () => changeLanguage('en'));
-document.getElementById('es-btn')!.addEventListener('click', () => changeLanguage('es'));
-
-// Inicializar el contenido de la página
-updateContent();

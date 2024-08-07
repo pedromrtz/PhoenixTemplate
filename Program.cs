@@ -1,19 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using PhoenixTemplate.Models.Accesos;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuración de conexiones a bases de datos
+var AccesosConnStr = builder.Configuration.GetConnectionString("AccesosConnStr");
+
+// Agregar DbContexts para las bases de datos
+builder.Services.AddDbContext<AccesosContext>(options => options.UseSqlServer(AccesosConnStr));
 
 builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 
 // Configuración de CORS para permitir todas las solicitudes
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll", builder => {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
 });
 
 var app = builder.Build();

@@ -35,83 +35,66 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import * as global from './global.js';
-window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
-    function traducirPagina(idioma) {
-        var elementosATraducir = document.querySelectorAll('.traducir');
-        elementosATraducir.forEach(function (elemento) {
-            var textoOriginal = elemento.textContent;
-            var url = "/proxy-translate?q=".concat(encodeURIComponent(textoOriginal), "&tl=").concat(idioma);
-            fetch(url)
-                .then(function (response) { return response.json(); })
-                .then(function (data) {
-                var textoTraducido = global.capitalizarPrimeraLetra(data[0][0][0]);
-                elemento.textContent = textoTraducido;
-            })
-                .catch(function (error) {
-                console.error('Error al traducir:', error);
+document.addEventListener("DOMContentLoaded", function () {
+    var role_sys = "Eres un traductor. A continuaci\u00F3n, te proporcionar\u00E9 un JSON cuyas claves indican el c\u00F3digo de cada idioma: { \"en\" : \"english\", \"es\" : \"spanish\", \"pt\" : \"portuguese\", \"zh\" : \"chinese\" } Ahora te compartir\u00E9 un ejemplo de JSON cuya clave \"content\" contendr\u00E1 un texto, y la clave \"target\" indicar\u00E1 el idioma al que debe ser traducido el texto: { \"content\" : \"Hola, por favor traduce este mensaje\", \"target\" : \"en\" } Por favor, responde \u00FAnicamente con un JSON en texto plano (plain text) que contenga las claves \"original\" y \"translated\". La clave \"original\" debe contener el mismo texto proporcionado en \"content\", y la clave \"translated\" debe contener el texto traducido al idioma especificado en \"target\". Ejemplo de respuesta esperada: { \"original\" : \"Hola, por favor traduce este mensaje\", \"translated\" : \"Hello, please translate this message\" } La respuesta debe ser igualmente en texto plano (plain text), sin incluir notas, comentarios, ni informaci\u00F3n adicional; solo responde con el objeto JSON solicitado. A continuaci\u00F3n te proporcionar\u00E9 el JSON con el content que deber\u00E1s traducir:";
+    window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
+        function traducirPagina(idioma) {
+            return __awaiter(this, void 0, void 0, function () {
+                var elementosATraducir, elementosArray, _i, elementosArray_1, elemento, textoOriginal, chatPrompt, message, chatResponse, error_1;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            elementosATraducir = document.querySelectorAll('.traducir');
+                            elementosArray = Array.from(elementosATraducir);
+                            _i = 0, elementosArray_1 = elementosArray;
+                            _a.label = 1;
+                        case 1:
+                            if (!(_i < elementosArray_1.length)) return [3 /*break*/, 7];
+                            elemento = elementosArray_1[_i];
+                            textoOriginal = elemento.textContent || '';
+                            chatPrompt = "\n            {\n            \"content\" : \"".concat(textoOriginal, "\",\n            \"target\" : \"").concat(idioma, "\"\n            }");
+                            _a.label = 2;
+                        case 2:
+                            _a.trys.push([2, 4, , 5]);
+                            return [4 /*yield*/, global.AskToLlama(chatPrompt, role_sys)];
+                        case 3:
+                            message = _a.sent();
+                            chatResponse = JSON.parse(message.content);
+                            elemento.textContent = chatResponse.translated;
+                            return [3 /*break*/, 6];
+                        case 4:
+                            error_1 = _a.sent();
+                            console.error('Error:', error_1);
+                            return [3 /*break*/, 5];
+                        case 5: return [3 /*break*/, 7];
+                        case 6:
+                            _i++;
+                            return [3 /*break*/, 1];
+                        case 7: return [2 /*return*/];
+                    }
+                });
             });
-        });
-    }
-    var initlang, lang_es, lang_en, lang_pt, lang_ch;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                initlang = localStorage.getItem('lang') || 'es';
-                return [4 /*yield*/, traducirPagina(initlang)];
-            case 1:
-                _a.sent();
-                lang_es = document.getElementById('lang_es');
-                lang_en = document.getElementById('lang_en');
-                lang_pt = document.getElementById('lang_pt');
-                lang_ch = document.getElementById('lang_ch');
-                if (lang_es != null && lang_en != null && lang_pt != null && lang_ch != null) {
-                    lang_es.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, traducirPagina('es')];
-                                case 1:
-                                    _a.sent();
-                                    localStorage.setItem('lang', 'es');
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); };
-                    lang_en.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, traducirPagina('en')];
-                                case 1:
-                                    _a.sent();
-                                    localStorage.setItem('lang', 'en');
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); };
-                    lang_pt.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, traducirPagina('pt')];
-                                case 1:
-                                    _a.sent();
-                                    localStorage.setItem('lang', 'pt');
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); };
-                    lang_ch.onclick = function () { return __awaiter(void 0, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, traducirPagina('zh')];
-                                case 1:
-                                    _a.sent();
-                                    localStorage.setItem('lang', 'zh');
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); };
-                }
-                return [2 /*return*/];
         }
-    });
-}); };
+        function changeLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            window.location.reload();
+        }
+        var initlang, lang_es, lang_en, lang_pt;
+        return __generator(this, function (_a) {
+            initlang = localStorage.getItem('lang') || 'en';
+            if (initlang != 'es') {
+                traducirPagina(initlang);
+            }
+            lang_es = document.getElementById('lang_es');
+            lang_en = document.getElementById('lang_en');
+            lang_pt = document.getElementById('lang_pt');
+            if (lang_es && lang_en && lang_pt) {
+                lang_es.onclick = function () { return changeLanguage('es'); };
+                lang_en.onclick = function () { return changeLanguage('en'); };
+                lang_pt.onclick = function () { return changeLanguage('pt'); };
+            }
+            return [2 /*return*/];
+        });
+    }); };
+});
 //# sourceMappingURL=lenguaje.js.map

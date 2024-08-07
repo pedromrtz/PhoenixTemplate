@@ -1,6 +1,6 @@
-ï»¿@{
+@{
     Layout = null;
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Error 500";
 
     var baseUrl = string.Empty;
     var controllerName = string.Empty;
@@ -43,7 +43,8 @@
     <!-- ===============================================-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet">
     <link href="~/template/vendors/simplebar/simplebar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href="~/template/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
@@ -81,7 +82,6 @@
     <!--  Custom CSS -->
     <!-- ===============================================-->
     <link href="~/css/shared/global.css" rel="stylesheet" />
-    <link href="~/css/Home/forgotPass.css" rel="stylesheet" />
 
     <!-- ===============================================-->
     <!--  Custom JS -->
@@ -89,33 +89,33 @@
     <script src="~/js/Shared/layout.js"></script>
     <script type="module" src="~/js/Shared/lenguaje.js"></script>
 
-    <script src="~/js/Home/forgotPass.js"></script>
-
 
 
 </head>
+
 <body>
+
     <main class="main" id="top">
-        <div class="container">
-            <div class="row flex-center min-vh-100 py-5">
-                <div class="col-sm-10 col-md-8 col-lg-5 col-xxl-4">
-                    <a class="d-flex flex-center text-decoration-none mb-4" href="@fullPath/Home">
-                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block">
-                            <img src="~/template/assets/img/icons/logo.png" alt="phoenix" width="58" />
+        <div class="px-3">
+            <div class="row min-vh-100 flex-center p-5">
+                <div class="col-12 col-xl-10 col-xxl-8">
+                    <div class="row justify-content-center g-5">
+                        <div class="col-12 col-lg-6 text-center order-lg-1">
+                            <img class="img-fluid w-lg-100 d-light-none"
+                                 src="~/template/assets/img/spot-illustrations/500-illustration.png" alt=""
+                                 class="img-fluid w-md-50 w-lg-100 d-dark-none"
+                                 src="~/template/assets/img/spot-illustrations/dark_500-illustration.png" alt=""
+                                 width="540">
                         </div>
-                    </a>
-                    <div class="px-xxl-5">
-                        <div class="text-center mb-6">
-                            <h4 class="text-body-highlight traducir">Â¿OlvidÃ³ su contraseÃ±a?</h4>
-                            <p class="text-body-tertiary mb-5 traducir" >Introduce tu direcciÃ³n de correo electrÃ³nico y te enviaremos un enlace para restablecer tu contraseÃ±a.</p>
-                            <form class="d-flex align-items-center mb-5">
-                                <input class="form-control flex-1" id="email" type="email" placeholder="Email" />
-                                <button class="btn btn-primary ms-2" id="btn_enviar_reset_link">
-                                    <span class="traducir">Enviar</span>
-                                    <span class="fas fa-chevron-right ms-2"></span>
-                                </button>
-                            </form>
-                            @* <a class="fs-9 fw-bold" href="">Still having problems?</a> *@
+                        <div class="col-12 col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mb-6 w-50 w-lg-75 d-dark-none"
+                                 src="~/template/assets/img/spot-illustrations/500.png" alt=""><img class="img-fluid mb-6 w-50 w-lg-75 d-light-none"
+                                                                                                    src="~/template/assets/img/spot-illustrations/dark_500.png" alt="">
+                            <h2 class="text-body-secondary fw-bolder mb-3 traducir">¡Ups, algo salió mal!</h2>
+                            <p class="text-body mb-5 traducir">
+                                Intenta actualizar la página o vuelve atrás e intenta realizar la acción de nuevo.
+                            </p>
+                            <a class="btn btn-lg btn-primary traducir" href="@fullPath/Home">Volver al Inicio</a>
                         </div>
                     </div>
                 </div>
@@ -125,4 +125,5 @@
     </main>
 
 </body>
+
 </html>
